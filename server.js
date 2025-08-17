@@ -26,8 +26,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-// Preflight (important for Vercel)
-app.options("*", cors(corsOptions));
+
 
 // ✅ Routes
 import authRoutes from "./routes/authRoutes.js";
