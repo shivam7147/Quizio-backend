@@ -1,4 +1,3 @@
-// server.js
 import express from "express";
 import { connectDB } from "./config/db.js";
 import dotenv from "dotenv";
@@ -27,7 +26,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-
 // ✅ Routes
 import authRoutes from "./routes/authRoutes.js";
 app.use("/api/auth", authRoutes);
@@ -38,16 +36,13 @@ app.use("/api/quiz", quizRoutes);
 import geminiRoutes from "./routes/geminiRoutes.js";
 app.use("/api/gemini", geminiRoutes);
 
-// ✅ Test route (debugging)
+// ✅ Test route
 app.get("/api/test", (req, res) => {
   res.json({ message: "✅ Backend working with CORS and MongoDB" });
 });
 
-// ✅ Local dev listener (disable for Vercel)
-if (process.env.NODE_ENV !== "production") {
-  const PORT = process.env.PORT || 5000;
-  app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
-}
+// ✅ Always listen (Render needs this)
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
 
-// ✅ Export for Vercel serverless
 export default app;
