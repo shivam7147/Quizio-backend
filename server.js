@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // ✅ CORS setup
-const allowedOrigin = process.env.FRONTEND_URL || "http://localhost:3000";
+const allowedOrigin = "https://quizio-7147.vercel.app" || "http://localhost:3000";
 
 const corsOptions = {
   origin: allowedOrigin,
